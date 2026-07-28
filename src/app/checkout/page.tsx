@@ -83,7 +83,7 @@ export default function CheckoutPage() {
         </p>
         <Link
           href="/shop"
-          className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium uppercase"
+          className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium uppercase transition-all duration-200 hover:bg-[var(--border-main)] hover:text-[var(--bg-main)] hover:scale-[1.02]"
           style={{ backgroundColor: 'var(--blue)', color: 'var(--white)', letterSpacing: '2px', fontSize: 13 }}
         >
           Continue Shopping
@@ -99,10 +99,10 @@ export default function CheckoutPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <Link
             href="/shop"
-            className="flex items-center gap-2 font-inter text-sm mb-6 transition-opacity hover:opacity-70"
+            className="group flex items-center gap-2 font-inter text-sm mb-6 transition-all duration-200 hover:text-[var(--blue)]"
             style={{ color: 'var(--text-muted)', fontSize: 12, letterSpacing: '1px' }}
           >
-            <ArrowLeft size={12} /> Continue Shopping
+            <ArrowLeft size={12} className="transition-transform duration-200 group-hover:-translate-x-1" /> Continue Shopping
           </Link>
           <p className="label mb-3" style={{ color: 'var(--yellow)' }}>Checkout</p>
           <h1
@@ -140,7 +140,7 @@ export default function CheckoutPage() {
               </p>
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium uppercase"
+                className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium uppercase transition-all duration-200 hover:bg-[var(--blue)] hover:text-white"
                 style={{ backgroundColor: 'var(--border-main)', color: 'var(--bg-main)', letterSpacing: '2px', fontSize: 13 }}
               >
                 Go to Shop
@@ -204,7 +204,7 @@ export default function CheckoutPage() {
                       <div className="flex items-center gap-0" style={{ border: '1px solid var(--border-main)', backgroundColor: 'var(--bg-card)' }}>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                          className="w-8 h-8 flex items-center justify-center transition-colors"
+                          className="w-8 h-8 flex items-center justify-center transition-colors hover:bg-[var(--bg-subtle)]"
                           style={{ borderRight: '1px solid var(--border-main)', backgroundColor: 'transparent', cursor: 'pointer' }}
                         >
                           <Minus size={12} style={{ color: 'var(--text-main)' }} />
@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                          className="w-8 h-8 flex items-center justify-center transition-colors"
+                          className="w-8 h-8 flex items-center justify-center transition-colors hover:bg-[var(--bg-subtle)]"
                           style={{ borderLeft: '1px solid var(--border-main)', backgroundColor: 'transparent', cursor: 'pointer' }}
                         >
                           <Plus size={12} style={{ color: 'var(--text-main)' }} />
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                       {/* Remove */}
                       <button
                         onClick={() => removeItem(item.product.id)}
-                        className="transition-opacity hover:opacity-50 mt-1"
+                        className="transition-all duration-150 hover:scale-110 mt-1"
                         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
                       >
                         <Trash2 size={16} style={{ color: 'var(--text-main)' }} />
@@ -305,7 +305,7 @@ export default function CheckoutPage() {
                         required={field.required}
                         value={form[field.name as keyof FormData]}
                         onChange={handleChange}
-                        className="font-inter w-full px-4 py-3 outline-none transition-colors"
+                        className="font-inter w-full px-4 py-3 outline-none transition-all duration-150"
                         style={{
                           border: '1px solid var(--border-main)',
                           fontSize: 15,
@@ -330,7 +330,7 @@ export default function CheckoutPage() {
                       placeholder="Any special instructions for the seller..."
                       value={form.note}
                       onChange={handleChange}
-                      className="font-inter w-full px-4 py-3 outline-none transition-colors resize-none"
+                      className="font-inter w-full px-4 py-3 outline-none transition-all duration-150 resize-none"
                       style={{
                         border: '1px solid var(--border-main)',
                         fontSize: 15,
@@ -345,17 +345,13 @@ export default function CheckoutPage() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-3 py-5 font-inter font-medium uppercase transition-colors mt-2"
+                    className="w-full flex items-center justify-center gap-3 py-5 font-inter font-medium uppercase transition-all duration-250 mt-2 bg-[var(--blue)] text-[var(--white)] hover:bg-[var(--border-main)] hover:text-[var(--bg-main)] hover:scale-[1.01]"
                     style={{
-                      backgroundColor: 'var(--blue)',
-                      color: 'var(--white)',
-                      letterSpacing: '2px',
-                      fontSize: 14,
                       border: 'none',
                       cursor: 'pointer',
+                      letterSpacing: '2px',
+                      fontSize: 14,
                     }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--border-main)')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--blue)')}
                   >
                     <MessageCircle size={18} />
                     Place Order via WhatsApp

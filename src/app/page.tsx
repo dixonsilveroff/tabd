@@ -48,7 +48,7 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors hover:bg-[var(--yellow)] hover:text-black"
+              className="group inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--yellow)] hover:text-black hover:scale-[1.02]"
               style={{
                 backgroundColor: 'var(--blue)',
                 color: 'var(--white)',
@@ -56,11 +56,11 @@ export default function HomePage() {
               }}
             >
               Shop Now
-              <ArrowRight size={16} />
+              <ArrowRight size={16} className="transition-transform duration-250 group-hover:translate-x-1" />
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--text-hero)] hover:text-[var(--bg-hero)] hover:border-[var(--text-hero)] hover:scale-[1.02]"
               style={{
                 backgroundColor: 'transparent',
                 color: 'var(--text-hero)',
@@ -74,20 +74,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IMPACT STATS (Stays consistent brand Yellow/Black) ── */}
+      {/* ── IMPACT STATS (Uses gap trick for clean mobile-first borders) ── */}
       <section
-        className="w-full border-b"
-        style={{ backgroundColor: '#FFA300', borderColor: '#0A0A0A' }}
+        className="w-full"
+        style={{ backgroundColor: '#0A0A0A' }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {IMPACT_STATS.map((stat, i) => (
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-[#0A0A0A] border-b border-[#0A0A0A]">
+            {IMPACT_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="py-8 px-6 flex flex-col gap-1"
-                style={{
-                  borderRight: i < IMPACT_STATS.length - 1 ? '1px solid #0A0A0A' : 'none',
-                }}
+                className="py-8 px-6 flex flex-col gap-1 bg-[#FFA300] hover:brightness-95 transition-all duration-200"
               >
                 <span
                   style={{
@@ -159,7 +156,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/shop"
-              className="hidden md:inline-flex items-center gap-2 font-inter font-medium text-sm uppercase transition-colors"
+              className="hidden md:inline-flex items-center gap-2 font-inter font-medium text-sm uppercase transition-all duration-200 hover:text-[var(--yellow)] hover:translate-x-1"
               style={{ color: 'var(--blue)', letterSpacing: '2px' }}
             >
               View All <ArrowRight size={14} />
@@ -175,7 +172,7 @@ export default function HomePage() {
           <div className="mt-10 md:hidden text-center">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--blue)] hover:text-white"
               style={{ backgroundColor: 'var(--border-main)', color: 'var(--bg-main)' }}
             >
               View All Products <ArrowRight size={14} />
@@ -228,7 +225,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors hover:bg-black hover:text-white"
+              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-black hover:text-white hover:scale-[1.02]"
               style={{ backgroundColor: '#FFA300', color: '#0A0A0A', letterSpacing: '2px' }}
             >
               Read Our Story <ArrowRight size={14} />
@@ -237,24 +234,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CATEGORIES STRIP ──────────────────────────── */}
+      {/* ── CATEGORIES STRIP (Uses gap trick for clean mobile-first borders) ── */}
       <section className="w-full py-16 md:py-20 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)', borderTop: '1px solid var(--border-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <p className="label mb-6" style={{ color: 'var(--yellow)' }}>Shop by Category</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0" style={{ border: '1px solid var(--border-main)' }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-[var(--border-main)] border border-[var(--border-main)]">
             {[
               { label: 'Soap Making', href: '/shop?category=soap', accent: 'var(--blue)' },
               { label: 'Crocheting', href: '/shop?category=crochet', accent: 'var(--yellow)' },
               { label: 'Bead Making', href: '/shop?category=beads', accent: 'var(--blue)' },
               { label: 'Millinery', href: '/shop?category=millinery', accent: 'var(--yellow)' },
-            ].map((cat, i) => (
+            ].map((cat) => (
               <Link
                 key={cat.label}
                 href={cat.href}
-                className="flex flex-col gap-3 p-8 transition-colors group"
-                style={{
-                  borderRight: i < 3 ? '1px solid var(--border-main)' : 'none',
-                }}
+                className="flex flex-col gap-3 p-8 bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] transition-colors duration-250 group"
               >
                 <span
                   style={{
@@ -269,15 +263,15 @@ export default function HomePage() {
                     fontWeight: 900,
                     fontSize: 28,
                     textTransform: 'uppercase',
-                    color: 'var(--text-main)',
                     lineHeight: 0.95,
                   }}
+                  className="text-[var(--text-main)]"
                 >
                   {cat.label}
                 </span>
                 <span
-                  className="label group-hover:text-[var(--blue)] transition-colors"
-                  style={{ color: 'var(--text-main)', fontSize: 11, letterSpacing: '2px' }}
+                  className="label group-hover:text-[var(--blue)] group-hover:translate-x-1.5 transition-all duration-200 w-fit"
+                  style={{ fontSize: 11, letterSpacing: '2px' }}
                 >
                   Shop →
                 </span>

@@ -70,33 +70,34 @@ export default function ShopClient() {
         style={{ backgroundColor: 'var(--bg-main)', borderBottom: '1px solid var(--border-main)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap items-center gap-0">
-            {/* Category tabs */}
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className="px-6 py-4 font-inter font-medium text-sm uppercase transition-colors"
-                style={{
-                  letterSpacing: '2px',
-                  fontSize: 12,
-                  backgroundColor: activeCategory === cat.value ? 'var(--border-main)' : 'transparent',
-                  color: activeCategory === cat.value ? 'var(--bg-main)' : 'var(--text-main)',
-                  borderRight: '1px solid var(--border-subtle)',
-                  borderTop: 'none',
-                  borderBottom: 'none',
-                  borderLeft: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
+            {/* Category tabs (Horizontal scrollable on mobile) */}
+            <div className="flex items-center gap-0 overflow-x-auto scrollbar-none flex-nowrap shrink-0 border-b md:border-b-0" style={{ borderColor: 'var(--border-subtle)' }}>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.value}
+                  onClick={() => setActiveCategory(cat.value)}
+                  className="px-5 py-4 font-inter font-medium text-xs md:text-sm uppercase transition-all duration-150 shrink-0 hover:bg-[var(--bg-subtle)]"
+                  style={{
+                    letterSpacing: '1.5px',
+                    backgroundColor: activeCategory === cat.value ? 'var(--border-main)' : 'transparent',
+                    color: activeCategory === cat.value ? 'var(--bg-main)' : 'var(--text-main)',
+                    borderRight: '1px solid var(--border-subtle)',
+                    borderTop: 'none',
+                    borderBottom: 'none',
+                    borderLeft: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
 
             {/* Search */}
             <div
-              className="flex items-center gap-2 ml-auto py-2 md:py-0"
-              style={{ borderLeft: '1px solid var(--border-subtle)', paddingLeft: 16 }}
+              className="flex items-center gap-2 py-3 md:py-0 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'var(--border-subtle)', paddingLeft: 16 }}
             >
               <Search size={14} style={{ color: 'var(--text-main)' }} />
               <input
@@ -104,11 +105,11 @@ export default function ShopClient() {
                 placeholder="Search products or sellers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="font-inter bg-transparent outline-none text-sm"
-                style={{ fontSize: 13, color: 'var(--text-main)', minWidth: 200 }}
+                className="font-inter bg-transparent outline-none text-sm transition-all duration-150 focus:w-[220px]"
+                style={{ fontSize: 13, color: 'var(--text-main)', minWidth: 180 }}
               />
               {searchQuery && (
-                <button onClick={() => setSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                <button onClick={() => setSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer' }} className="hover:scale-110 transition-transform duration-100">
                   <X size={14} style={{ color: 'var(--text-main)' }} />
                 </button>
               )}

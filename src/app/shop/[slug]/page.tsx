@@ -58,10 +58,10 @@ export default async function ProductPage(
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center gap-3">
           <Link
             href="/shop"
-            className="flex items-center gap-2 font-inter text-sm transition-opacity hover:opacity-70"
+            className="group flex items-center gap-2 font-inter text-sm transition-all duration-200 hover:text-[var(--blue)]"
             style={{ color: 'var(--text-muted)', fontSize: 12, letterSpacing: '1px' }}
           >
-            <ArrowLeft size={12} /> Back to Shop
+            <ArrowLeft size={12} className="transition-transform duration-200 group-hover:-translate-x-1" /> Back to Shop
           </Link>
           <span style={{ color: 'var(--text-muted)', opacity: 0.5 }}>/</span>
           <span className="label" style={{ color: 'var(--yellow)', fontSize: 11 }}>
@@ -78,18 +78,18 @@ export default async function ProductPage(
             {/* Image */}
             <div>
               <div
-                className="relative w-full shadow-md"
+                className="relative w-full shadow-md overflow-hidden"
                 style={{ aspectRatio: '1 / 1', backgroundColor: 'var(--bg-subtle)' }}
               >
                 <Image
                   src={product.images[0]}
                   alt={product.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
                 />
                 {/* Category overlay tag */}
                 <div
-                  className="absolute top-0 left-0 px-4 py-2"
+                  className="absolute top-0 left-0 px-4 py-2 animate-fade-in"
                   style={{ backgroundColor: 'var(--yellow)' }}
                 >
                   <span className="label" style={{ fontSize: 11, color: 'var(--black)' }}>
@@ -191,7 +191,7 @@ export default async function ProductPage(
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 py-4 font-inter font-medium uppercase transition-colors hover:bg-[var(--border-main)] hover:text-[var(--bg-main)]"
+                  className="w-full flex items-center justify-center gap-3 py-4 font-inter font-medium uppercase transition-all duration-200 hover:bg-[var(--border-main)] hover:text-[var(--bg-main)] hover:scale-[1.01]"
                   style={{
                     backgroundColor: 'transparent',
                     color: 'var(--text-main)',
@@ -233,11 +233,11 @@ export default async function ProductPage(
               {related.map((p) => (
                 <div
                   key={p.id}
-                  className="shadow-sm bg-[var(--bg-card)] transition-colors duration-200"
+                  className="shadow-sm bg-[var(--bg-card)] transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                   style={{ border: '1px solid var(--border-main)' }}
                 >
-                  <Link href={`/shop/${p.slug}`} className="block p-6" style={{ textDecoration: 'none' }}>
-                    <span className="label" style={{ fontSize: 11, color: 'var(--yellow)' }}>
+                  <Link href={`/shop/${p.slug}`} className="block p-6 group" style={{ textDecoration: 'none' }}>
+                    <span className="label group-hover:text-[var(--blue)] transition-colors duration-200" style={{ fontSize: 11, color: 'var(--yellow)' }}>
                       {categoryLabel[p.category]}
                     </span>
                     <h3
@@ -253,7 +253,7 @@ export default async function ProductPage(
                     >
                       {p.name}
                     </h3>
-                    <p className="font-inter" style={{ color: 'var(--blue)', fontWeight: 900, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 20 }}>
+                    <p className="font-inter transition-colors duration-200 group-hover:text-[var(--yellow)]" style={{ color: 'var(--blue)', fontWeight: 900, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 20 }}>
                       ₦{p.price.toLocaleString('en-NG')}
                     </p>
                     <p className="font-inter mt-2" style={{ color: 'var(--text-muted)', fontSize: 13 }}>

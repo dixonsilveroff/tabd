@@ -26,7 +26,6 @@ export default function Navbar() {
         top: 0,
         zIndex: 50,
         backgroundColor: 'var(--bg-navbar)',
-        color: 'var(--text-navbar)',
         borderBottom: '1px solid var(--border-subtle)',
       }}
       className="shadow-md transition-colors duration-200"
@@ -34,7 +33,7 @@ export default function Navbar() {
       {/* Main bar */}
       <div className="flex items-center justify-between px-6" style={{ height: 64 }}>
         {/* Left: Logo + wordmark */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-85 hover:scale-[1.02] transition-all duration-200">
           <Image
             src="/logo.png"
             alt="TABD"
@@ -47,10 +46,10 @@ export default function Navbar() {
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
               fontSize: 20,
-              color: 'var(--text-navbar)',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
             }}
+            className="text-[var(--text-navbar)] transition-colors duration-200"
           >
             TABD MARKET
           </span>
@@ -68,12 +67,11 @@ export default function Navbar() {
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
-                  color: 'var(--text-navbar)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.15em',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200"
+                className="text-[var(--text-navbar)] hover:text-[var(--blue)] hover:-translate-y-0.5 transition-all duration-200"
               >
                 {link.label}
               </Link>
@@ -81,24 +79,26 @@ export default function Navbar() {
           </nav>
 
           {/* Theme Switcher */}
-          <ThemeToggle />
+          <div className="hover:scale-115 hover:bg-[var(--bg-subtle)] transition-all duration-200 flex items-center justify-center w-10 h-10 border border-transparent hover:border-[var(--border-subtle)]">
+            <ThemeToggle />
+          </div>
 
           {/* Cart icon + badge */}
           <button
             onClick={openCart}
             aria-label="Open cart"
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center hover:scale-115 transition-transform duration-200"
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
           >
-            <ShoppingBag size={24} style={{ color: 'var(--text-navbar)' }} />
+            <ShoppingBag size={24} style={{ color: 'var(--text-navbar)' }} className="transition-colors duration-200" />
             {itemCount > 0 && (
               <span
                 style={{
                   position: 'absolute',
                   top: -6,
                   right: -8,
-                  backgroundColor: '#0047FF',
-                  color: '#FFFFFF',
+                  backgroundColor: 'var(--blue)',
+                  color: 'var(--white)',
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontSize: 14,
                   fontWeight: 700,
@@ -118,15 +118,15 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex items-center justify-center"
+            className="md:hidden flex items-center justify-center hover:scale-110 transition-transform duration-150"
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? (
-              <X size={24} style={{ color: 'var(--text-navbar)' }} />
+              <X size={24} style={{ color: 'var(--text-navbar)' }} className="transition-colors duration-200" />
             ) : (
-              <Menu size={24} style={{ color: 'var(--text-navbar)' }} />
+              <Menu size={24} style={{ color: 'var(--text-navbar)' }} className="transition-colors duration-200" />
             )}
           </button>
         </div>
@@ -152,12 +152,11 @@ export default function Navbar() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 14,
-                color: 'var(--text-navbar)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.15em',
                 textDecoration: 'none',
               }}
-              className="hover:text-[#0047FF] transition-colors duration-200"
+              className="text-[var(--text-navbar)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 py-1"
             >
               {link.label}
             </Link>

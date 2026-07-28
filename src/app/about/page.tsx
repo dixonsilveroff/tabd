@@ -152,7 +152,7 @@ export default function AboutPage() {
             ].map((item) => (
               <div
                 key={item.heading}
-                className="p-8"
+                className="p-8 hover:-translate-y-1 hover:shadow-md transition-all duration-250 bg-[var(--bg-card)]"
                 style={{ border: '1px solid var(--border-subtle)' }}
               >
                 <div className="mb-4">{item.icon}</div>
@@ -161,7 +161,7 @@ export default function AboutPage() {
                     fontFamily: "'Barlow Condensed', sans-serif",
                     fontWeight: 700,
                     fontSize: 22,
-                    color: 'var(--text-mission)',
+                    color: 'var(--text-main)',
                     textTransform: 'uppercase',
                     marginBottom: 12,
                   }}
@@ -177,7 +177,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Team ────────────────────────────────────── */}
+      {/* ── Team (Uses gap trick for clean mobile-first borders) ── */}
       <section className="w-full py-16 md:py-24 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <p className="label mb-4" style={{ color: 'var(--yellow)' }}>The Team</p>
@@ -194,14 +194,12 @@ export default function AboutPage() {
             MEET THE PEOPLE<br />BEHIND TABD.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0" style={{ border: '1px solid var(--border-main)' }}>
-            {TEAM_MEMBERS.map((member, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[var(--border-main)] border border-[var(--border-main)]">
+            {TEAM_MEMBERS.map((member) => (
               <div
                 key={member.email}
-                className="p-8"
+                className="p-8 hover:brightness-[0.98] md:hover:scale-[1.01] transition-all duration-200"
                 style={{
-                  borderRight: (i + 1) % 3 !== 0 ? '1px solid var(--border-main)' : 'none',
-                  borderBottom: i < TEAM_MEMBERS.length - 3 ? '1px solid var(--border-main)' : 'none',
                   backgroundColor: member.isLead ? 'var(--border-main)' : member.isDeputy ? 'var(--blue)' : 'var(--bg-card)',
                   color: member.isLead ? 'var(--bg-main)' : member.isDeputy ? '#FFFFFF' : 'var(--text-main)',
                 }}
@@ -278,8 +276,8 @@ export default function AboutPage() {
             {PARTNERS.map((partner) => (
               <div
                 key={partner.name}
-                className="p-6 flex gap-4 items-start"
-                style={{ border: '1px solid var(--border-main)', backgroundColor: 'var(--bg-card)' }}
+                className="p-6 flex gap-4 items-start hover:-translate-y-1 hover:shadow-md transition-all duration-250 bg-[var(--bg-card)]"
+                style={{ border: '1px solid var(--border-main)' }}
               >
                 <div
                   style={{
@@ -338,7 +336,7 @@ export default function AboutPage() {
           </h2>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-3 px-10 py-5 font-inter font-medium uppercase transition-colors"
+            className="inline-flex items-center gap-3 px-10 py-5 font-inter font-medium uppercase transition-all duration-200 hover:bg-black hover:text-white hover:scale-[1.02]"
             style={{
               backgroundColor: '#0A0A0A',
               color: '#FFFFFF',

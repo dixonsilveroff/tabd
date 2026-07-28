@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: 'var(--bg-footer)', color: 'var(--text-footer)', borderTop: '1px solid var(--border-footer)' }} className="transition-colors duration-200">
+    <footer style={{ backgroundColor: 'var(--bg-footer)', borderTop: '1px solid var(--border-footer)' }} className="transition-colors duration-200">
       {/* Main body */}
       <div className="px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 w-fit hover:opacity-85 hover:scale-[1.02] transition-all duration-200">
               <Image
                 src="/logo.png"
                 alt="TABD"
@@ -17,17 +17,17 @@ export default function Footer() {
                 height={48}
                 style={{ borderRadius: 0 }}
               />
-            </div>
+            </Link>
             <p
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 24,
-                color: 'var(--text-footer)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.04em',
                 lineHeight: 1.1,
               }}
+              className="text-[var(--text-footer)] transition-colors duration-200"
             >
               Abilities Beyond<br />Disabilities
             </p>
@@ -35,9 +35,9 @@ export default function Footer() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 14,
-                color: 'var(--text-muted)',
                 letterSpacing: '0.02em',
               }}
+              className="text-[var(--text-muted)] transition-colors duration-200"
             >
               Inclusion · Empowerment · Opportunity
             </p>
@@ -70,10 +70,9 @@ export default function Footer() {
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: 14,
-                    color: 'var(--text-muted)',
                     textDecoration: 'none',
                   }}
-                  className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                  className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
                 >
                   {link.label}
                 </Link>
@@ -101,10 +100,9 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
                 team.tabd@gmail.com
               </a>
@@ -113,10 +111,9 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
                 08110445408
               </a>
@@ -125,10 +122,9 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
                 09047921865
               </a>
@@ -146,10 +142,10 @@ export default function Footer() {
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: 12,
-            color: 'var(--text-muted)',
             textAlign: 'center',
             lineHeight: 1.6,
           }}
+          className="text-[var(--text-muted)] transition-colors duration-200"
         >
           © 2026 Team Abilities Beyond Disabilities. Alex Ekwueme Federal University,
           Ndufu-Alike, Ikwo LGA, Ebonyi State.

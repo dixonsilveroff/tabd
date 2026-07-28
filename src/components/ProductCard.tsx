@@ -18,7 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/shop/${product.slug}`}
-      className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-main)] shadow-md rounded-none transition-colors duration-200"
+      className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-main)] shadow-md rounded-none hover:-translate-y-1.5 hover:shadow-xl transition-all duration-250"
       style={{ borderRadius: 0 }}
     >
       {/* Image area */}
@@ -28,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             src={product.images[0]}
             alt={product.name}
             fill
-            className="object-cover rounded-none"
+            className="object-cover rounded-none transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : null}
@@ -116,7 +116,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         >
           View Product
         </span>
-        <ArrowUpRight size={16} style={{ color: 'var(--bg-main)' }} />
+        <ArrowUpRight
+          size={16}
+          style={{ color: 'var(--bg-main)' }}
+          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
       </div>
     </Link>
   );

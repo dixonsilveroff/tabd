@@ -154,3 +154,13 @@ h4 {
 ::-webkit-scrollbar-thumb {
   background: var(--text-main);
 }
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
