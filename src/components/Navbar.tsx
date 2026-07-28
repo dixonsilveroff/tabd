@@ -1,0 +1,163 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ShoppingBag, Menu, X } from 'lucide-react';
+import { useCartStore } from '@/lib/cart';
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'About', href: '/about' },
+];
+
+export default function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { totalItems, openCart } = useCartStore();
+
+  const itemCount = totalItems();
+
+  return (
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        backgroundColor: '#0A0A0A',
+      }}
+      className="shadow-md"
+    >
+      {/* Main bar */}
+      <div className="flex items-center justify-between px-6" style={{ height: 64 }}>
+        {/* Left: Logo + wordmark */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="TABD"
+            width={48}
+            height={48}
+            style={{ borderRadius: 0 }}
+          />
+          <span
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: 20,
+              color: '#FFFFFF',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}
+          >
+            TABD MARKET
+          </span>
+        </Link>
+
+        {/* Right: desktop nav + cart */}
+        <div className="flex items-center gap-8">
+          {/* Desktop nav links */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  color: '#FFFFFF',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.15em',
+                  textDecoration: 'none',
+                }}
+                className="hover:text-[#0047FF] transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Cart icon + badge */}
+          <button
+            onClick={openCart}
+            aria-label="Open cart"
+            className="relative flex items-center justify-center"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
+          >
+            <ShoppingBag size={24} color="#FFFFFF" />
+            {itemCount > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: -6,
+                  right: -8,
+                  backgroundColor: '#0047FF',
+                  color: '#FFFFFF',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  borderRadius: 0,
+                  minWidth: 20,
+                  height: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 4px',
+                }}
+              >
+                {itemCount}
+              </span>
+            )}
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden flex items-center justify-center"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <X size={24} color="#FFFFFF" />
+            ) : (
+              <Menu size={24} color="#FFFFFF" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile dropdown */}
+      <div
+        style={{
+          backgroundColor: '#0A0A0A',
+          overflow: 'hidden',
+          maxHeight: mobileOpen ? 200 : 0,
+          transition: 'max-height 0.3s ease',
+        }}
+        className="md:hidden"
+      >
+        <nav className="flex flex-col px-6 pb-4 gap-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 500,
+                fontSize: 14,
+                color: '#FFFFFF',
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em',
+                textDecoration: 'none',
+              }}
+              className="hover:text-[#0047FF] transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
