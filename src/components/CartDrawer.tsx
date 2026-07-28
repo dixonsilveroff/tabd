@@ -33,26 +33,28 @@ export default function CartDrawer() {
           height: '100%',
           width: 360,
           zIndex: 60,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'var(--bg-cart)',
+          color: 'var(--text-cart)',
           transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease',
           display: 'flex',
           flexDirection: 'column',
           boxShadow: isOpen ? '-4px 0 24px rgba(0,0,0,0.18)' : 'none',
+          borderLeft: '1px solid var(--border-main)',
         }}
         aria-label="Shopping cart"
       >
         {/* Header */}
         <div
           className="flex items-center justify-between px-6 py-5"
-          style={{ borderBottom: '1px solid #E5E5E5' }}
+          style={{ borderBottom: '1px solid var(--border-subtle)' }}
         >
           <span
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
               fontSize: 28,
-              color: '#0A0A0A',
+              color: 'var(--text-cart)',
               textTransform: 'uppercase',
               letterSpacing: '0.04em',
             }}
@@ -67,7 +69,7 @@ export default function CartDrawer() {
               border: 'none',
               cursor: 'pointer',
               padding: 4,
-              color: '#0A0A0A',
+              color: 'var(--text-cart)',
             }}
           >
             <X size={22} />
@@ -79,13 +81,13 @@ export default function CartDrawer() {
           {items.length === 0 ? (
             /* Empty state */
             <div className="flex flex-col items-center justify-center h-full gap-5 text-center">
-              <ShoppingBag size={56} color="#0047FF" />
+              <ShoppingBag size={56} style={{ color: 'var(--blue)' }} />
               <p
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 22,
-                  color: '#0A0A0A',
+                  color: 'var(--text-cart)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.04em',
                 }}
@@ -97,8 +99,8 @@ export default function CartDrawer() {
                 onClick={closeCart}
                 style={{
                   display: 'inline-block',
-                  backgroundColor: '#0A0A0A',
-                  color: '#FFFFFF',
+                  backgroundColor: 'var(--border-main)',
+                  color: 'var(--bg-main)',
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 700,
                   fontSize: 14,
@@ -108,7 +110,7 @@ export default function CartDrawer() {
                   borderRadius: 0,
                   textDecoration: 'none',
                 }}
-                className="shadow-sm hover:bg-[#0047FF] transition-colors duration-200"
+                className="shadow-sm hover:bg-[var(--blue)] hover:text-white transition-colors duration-200"
               >
                 Start Shopping
               </Link>
@@ -120,7 +122,7 @@ export default function CartDrawer() {
                 <li
                   key={item.product.id}
                   className="flex gap-4"
-                  style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: 20 }}
+                  style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: 20 }}
                 >
                   {/* Product info */}
                   <div className="flex-1 min-w-0">
@@ -129,7 +131,7 @@ export default function CartDrawer() {
                         fontFamily: "'Barlow Condensed', sans-serif",
                         fontWeight: 700,
                         fontSize: 16,
-                        color: '#0A0A0A',
+                        color: 'var(--text-cart)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.02em',
                         whiteSpace: 'nowrap',
@@ -144,7 +146,7 @@ export default function CartDrawer() {
                         style={{
                           fontFamily: "'Inter', sans-serif",
                           fontSize: 12,
-                          color: '#6B6B6B',
+                          color: 'var(--text-muted)',
                           marginTop: 2,
                         }}
                       >
@@ -156,7 +158,7 @@ export default function CartDrawer() {
                         fontFamily: "'Inter', sans-serif",
                         fontWeight: 500,
                         fontSize: 14,
-                        color: '#0047FF',
+                        color: 'var(--blue)',
                         marginTop: 6,
                       }}
                     >
@@ -176,8 +178,8 @@ export default function CartDrawer() {
                         style={{
                           width: 28,
                           height: 28,
-                          border: '1.5px solid #0A0A0A',
-                          background: '#FFFFFF',
+                          border: '1.5px solid var(--border-main)',
+                          background: 'var(--bg-cart)',
                           borderRadius: 0,
                           cursor: 'pointer',
                           display: 'flex',
@@ -185,14 +187,14 @@ export default function CartDrawer() {
                           justifyContent: 'center',
                         }}
                       >
-                        <Minus size={14} color="#0A0A0A" />
+                        <Minus size={14} style={{ color: 'var(--text-cart)' }} />
                       </button>
                       <span
                         style={{
                           fontFamily: "'Inter', sans-serif",
                           fontWeight: 600,
                           fontSize: 14,
-                          color: '#0A0A0A',
+                          color: 'var(--text-cart)',
                           minWidth: 20,
                           textAlign: 'center',
                         }}
@@ -205,8 +207,8 @@ export default function CartDrawer() {
                         style={{
                           width: 28,
                           height: 28,
-                          border: '1.5px solid #0A0A0A',
-                          background: '#FFFFFF',
+                          border: '1.5px solid var(--border-main)',
+                          background: 'var(--bg-cart)',
                           borderRadius: 0,
                           cursor: 'pointer',
                           display: 'flex',
@@ -214,7 +216,7 @@ export default function CartDrawer() {
                           justifyContent: 'center',
                         }}
                       >
-                        <Plus size={14} color="#0A0A0A" />
+                        <Plus size={14} style={{ color: 'var(--text-cart)' }} />
                       </button>
                     </div>
 
@@ -227,7 +229,7 @@ export default function CartDrawer() {
                         border: 'none',
                         cursor: 'pointer',
                         padding: 2,
-                        color: '#B0B0B0',
+                        color: 'var(--text-muted)',
                       }}
                       className="hover:text-red-600 transition-colors duration-150"
                     >
@@ -244,7 +246,7 @@ export default function CartDrawer() {
         {items.length > 0 && (
           <div
             className="px-6 py-5 flex flex-col gap-4"
-            style={{ borderTop: '1px solid #E5E5E5' }}
+            style={{ borderTop: '1px solid var(--border-subtle)' }}
           >
             {/* Subtotal */}
             <div className="flex items-center justify-between">
@@ -252,7 +254,7 @@ export default function CartDrawer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 13,
-                  color: '#6B6B6B',
+                  color: 'var(--text-muted)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
                 }}
@@ -264,7 +266,7 @@ export default function CartDrawer() {
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 22,
-                  color: '#0A0A0A',
+                  color: 'var(--text-cart)',
                 }}
               >
                 {formatNaira(totalPrice())}
@@ -278,8 +280,8 @@ export default function CartDrawer() {
               style={{
                 display: 'block',
                 width: '100%',
-                backgroundColor: '#0047FF',
-                color: '#FFFFFF',
+                backgroundColor: 'var(--blue)',
+                color: 'var(--white)',
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 18,

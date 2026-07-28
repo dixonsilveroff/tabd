@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCartStore } from '@/lib/cart';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -24,9 +25,11 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        backgroundColor: '#0A0A0A',
+        backgroundColor: 'var(--bg-navbar)',
+        color: 'var(--text-navbar)',
+        borderBottom: '1px solid var(--border-subtle)',
       }}
-      className="shadow-md"
+      className="shadow-md transition-colors duration-200"
     >
       {/* Main bar */}
       <div className="flex items-center justify-between px-6" style={{ height: 64 }}>
@@ -44,7 +47,7 @@ export default function Navbar() {
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
               fontSize: 20,
-              color: '#FFFFFF',
+              color: 'var(--text-navbar)',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
             }}
@@ -54,7 +57,7 @@ export default function Navbar() {
         </Link>
 
         {/* Right: desktop nav + cart */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6 md:gap-8">
           {/* Desktop nav links */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -65,7 +68,7 @@ export default function Navbar() {
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
-                  color: '#FFFFFF',
+                  color: 'var(--text-navbar)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.15em',
                   textDecoration: 'none',
@@ -77,6 +80,9 @@ export default function Navbar() {
             ))}
           </nav>
 
+          {/* Theme Switcher */}
+          <ThemeToggle />
+
           {/* Cart icon + badge */}
           <button
             onClick={openCart}
@@ -84,7 +90,7 @@ export default function Navbar() {
             className="relative flex items-center justify-center"
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
           >
-            <ShoppingBag size={24} color="#FFFFFF" />
+            <ShoppingBag size={24} style={{ color: 'var(--text-navbar)' }} />
             {itemCount > 0 && (
               <span
                 style={{
@@ -118,9 +124,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             {mobileOpen ? (
-              <X size={24} color="#FFFFFF" />
+              <X size={24} style={{ color: 'var(--text-navbar)' }} />
             ) : (
-              <Menu size={24} color="#FFFFFF" />
+              <Menu size={24} style={{ color: 'var(--text-navbar)' }} />
             )}
           </button>
         </div>
@@ -129,7 +135,7 @@ export default function Navbar() {
       {/* Mobile dropdown */}
       <div
         style={{
-          backgroundColor: '#0A0A0A',
+          backgroundColor: 'var(--bg-navbar)',
           overflow: 'hidden',
           maxHeight: mobileOpen ? 200 : 0,
           transition: 'max-height 0.3s ease',
@@ -146,7 +152,7 @@ export default function Navbar() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 14,
-                color: '#FFFFFF',
+                color: 'var(--text-navbar)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.15em',
                 textDecoration: 'none',

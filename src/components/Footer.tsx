@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0A0A0A', color: '#FFFFFF' }}>
+    <footer style={{ backgroundColor: 'var(--bg-footer)', color: 'var(--text-footer)', borderTop: '1px solid var(--border-footer)' }} className="transition-colors duration-200">
       {/* Main body */}
       <div className="px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -23,7 +23,7 @@ export default function Footer() {
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 24,
-                color: '#FFFFFF',
+                color: 'var(--text-footer)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.04em',
                 lineHeight: 1.1,
@@ -35,7 +35,7 @@ export default function Footer() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 14,
-                color: '#9CA3AF',
+                color: 'var(--text-muted)',
                 letterSpacing: '0.02em',
               }}
             >
@@ -50,7 +50,7 @@ export default function Footer() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 12,
-                color: '#FFA300',
+                color: 'var(--yellow)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
               }}
@@ -70,7 +70,7 @@ export default function Footer() {
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: 14,
-                    color: '#D1D5DB',
+                    color: 'var(--text-muted)',
                     textDecoration: 'none',
                   }}
                   className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
@@ -88,7 +88,7 @@ export default function Footer() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 12,
-                color: '#FFA300',
+                color: 'var(--yellow)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
               }}
@@ -101,7 +101,7 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: '#D1D5DB',
+                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
                 className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
@@ -113,7 +113,7 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: '#D1D5DB',
+                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
                 className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
@@ -125,24 +125,13 @@ export default function Footer() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: '#D1D5DB',
+                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                 }}
                 className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
               >
                 09047921865
               </a>
-              {/* <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: 12,
-                  color: '#6B7280',
-                  fontStyle: 'italic',
-                  marginTop: 8,
-                }}
-              >
-                YLDP 2026 Change Project
-              </p> */}
             </div>
           </div>
         </div>
@@ -150,14 +139,14 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div
-        style={{ borderTop: '1px solid rgba(255,255,255,0.10)' }}
+        style={{ borderTop: '1px solid var(--border-subtle)' }}
         className="py-6 px-8"
       >
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: 12,
-            color: '#6B7280',
+            color: 'var(--text-muted)',
             textAlign: 'center',
             lineHeight: 1.6,
           }}

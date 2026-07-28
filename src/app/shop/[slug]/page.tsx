@@ -52,26 +52,26 @@ export default async function ProductPage(
     <>
       {/* ── Breadcrumb ─────────────────────────────────── */}
       <div
-        className="w-full py-4"
-        style={{ backgroundColor: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+        className="w-full py-4 transition-colors duration-200"
+        style={{ backgroundColor: 'var(--bg-hero)', borderBottom: '1px solid var(--border-subtle)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center gap-3">
           <Link
             href="/shop"
             className="flex items-center gap-2 font-inter text-sm transition-opacity hover:opacity-70"
-            style={{ color: 'rgba(255,255,255,0.6)', fontSize: 12, letterSpacing: '1px' }}
+            style={{ color: 'var(--text-muted)', fontSize: 12, letterSpacing: '1px' }}
           >
             <ArrowLeft size={12} /> Back to Shop
           </Link>
-          <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
-          <span className="label" style={{ color: '#FFA300', fontSize: 11 }}>
+          <span style={{ color: 'var(--text-muted)', opacity: 0.5 }}>/</span>
+          <span className="label" style={{ color: 'var(--yellow)', fontSize: 11 }}>
             {categoryLabel[product.category]}
           </span>
         </div>
       </div>
 
       {/* ── Product Detail ──────────────────────────────── */}
-      <section className="w-full py-12 md:py-16" style={{ backgroundColor: '#FFFFFF' }}>
+      <section className="w-full py-12 md:py-16 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
 
@@ -79,7 +79,7 @@ export default async function ProductPage(
             <div>
               <div
                 className="relative w-full shadow-md"
-                style={{ aspectRatio: '1 / 1', backgroundColor: '#f5f5f5' }}
+                style={{ aspectRatio: '1 / 1', backgroundColor: 'var(--bg-subtle)' }}
               >
                 <Image
                   src={product.images[0]}
@@ -90,9 +90,9 @@ export default async function ProductPage(
                 {/* Category overlay tag */}
                 <div
                   className="absolute top-0 left-0 px-4 py-2"
-                  style={{ backgroundColor: '#FFA300' }}
+                  style={{ backgroundColor: 'var(--yellow)' }}
                 >
-                  <span className="label" style={{ fontSize: 11, color: '#0A0A0A' }}>
+                  <span className="label" style={{ fontSize: 11, color: 'var(--black)' }}>
                     {categoryLabel[product.category]}
                   </span>
                 </div>
@@ -123,7 +123,7 @@ export default async function ProductPage(
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 'clamp(40px, 5vw, 64px)',
-                  color: '#0A0A0A',
+                  color: 'var(--text-main)',
                   lineHeight: 0.92,
                   textTransform: 'uppercase',
                   marginBottom: 16,
@@ -138,7 +138,7 @@ export default async function ProductPage(
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 40,
-                  color: '#0047FF',
+                  color: 'var(--blue)',
                   marginBottom: 20,
                 }}
               >
@@ -148,20 +148,20 @@ export default async function ProductPage(
               {/* Description */}
               <p
                 className="font-inter mb-8"
-                style={{ color: '#0A0A0A', fontSize: 16, lineHeight: 1.6, opacity: 0.8 }}
+                style={{ color: 'var(--text-main)', fontSize: 16, lineHeight: 1.6, opacity: 0.8 }}
               >
                 {product.description}
               </p>
 
               {/* Divider */}
-              <div style={{ borderTop: '1px solid #0A0A0A', marginBottom: 24 }} />
+              <div style={{ borderTop: '1px solid var(--border-main)', marginBottom: 24 }} />
 
               {/* Seller card */}
               <div
-                className="p-6 mb-8"
-                style={{ backgroundColor: '#0A0A0A' }}
+                className="p-6 mb-8 transition-colors duration-200"
+                style={{ backgroundColor: 'var(--border-main)' }}
               >
-                <p className="label mb-3" style={{ color: '#FFA300', fontSize: 11 }}>
+                <p className="label mb-3" style={{ color: 'var(--yellow)', fontSize: 11 }}>
                   The Artisan
                 </p>
                 <p
@@ -169,7 +169,7 @@ export default async function ProductPage(
                     fontFamily: "'Barlow Condensed', sans-serif",
                     fontWeight: 700,
                     fontSize: 22,
-                    color: '#FFFFFF',
+                    color: 'var(--bg-main)',
                     textTransform: 'uppercase',
                     marginBottom: 8,
                   }}
@@ -178,7 +178,7 @@ export default async function ProductPage(
                 </p>
                 <p
                   className="font-inter"
-                  style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.6 }}
+                  style={{ color: 'var(--text-hero-muted)', fontSize: 14, lineHeight: 1.6 }}
                 >
                   {product.sellerStory}
                 </p>
@@ -191,11 +191,11 @@ export default async function ProductPage(
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 py-4 font-inter font-medium uppercase transition-colors"
+                  className="w-full flex items-center justify-center gap-3 py-4 font-inter font-medium uppercase transition-colors hover:bg-[var(--border-main)] hover:text-[var(--bg-main)]"
                   style={{
                     backgroundColor: 'transparent',
-                    color: '#0A0A0A',
-                    border: '1px solid #0A0A0A',
+                    color: 'var(--text-main)',
+                    border: '1px solid var(--border-main)',
                     letterSpacing: '2px',
                     fontSize: 13,
                     textDecoration: 'none',
@@ -212,9 +212,9 @@ export default async function ProductPage(
 
       {/* ── Related Products ──────────────────────────── */}
       {related.length > 0 && (
-        <section className="w-full py-16" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #e0e0e0' }}>
+        <section className="w-full py-16 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-subtle)', borderTop: '1px solid var(--border-subtle)' }}>
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <p className="label mb-3" style={{ color: '#FFA300' }}>
+            <p className="label mb-3" style={{ color: 'var(--yellow)' }}>
               More from this category
             </p>
             <h2
@@ -222,7 +222,7 @@ export default async function ProductPage(
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 40,
-                color: '#0A0A0A',
+                color: 'var(--text-main)',
                 lineHeight: 0.93,
                 marginBottom: 32,
               }}
@@ -233,11 +233,11 @@ export default async function ProductPage(
               {related.map((p) => (
                 <div
                   key={p.id}
-                  className="border shadow-sm"
-                  style={{ border: '1px solid #0A0A0A' }}
+                  className="shadow-sm bg-[var(--bg-card)] transition-colors duration-200"
+                  style={{ border: '1px solid var(--border-main)' }}
                 >
                   <Link href={`/shop/${p.slug}`} className="block p-6" style={{ textDecoration: 'none' }}>
-                    <span className="label" style={{ fontSize: 11, color: '#FFA300' }}>
+                    <span className="label" style={{ fontSize: 11, color: 'var(--yellow)' }}>
                       {categoryLabel[p.category]}
                     </span>
                     <h3
@@ -245,7 +245,7 @@ export default async function ProductPage(
                         fontFamily: "'Barlow Condensed', sans-serif",
                         fontWeight: 700,
                         fontSize: 22,
-                        color: '#0A0A0A',
+                        color: 'var(--text-main)',
                         textTransform: 'uppercase',
                         marginTop: 8,
                         marginBottom: 6,
@@ -253,10 +253,10 @@ export default async function ProductPage(
                     >
                       {p.name}
                     </h3>
-                    <p className="font-inter" style={{ color: '#0047FF', fontWeight: 900, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 20 }}>
+                    <p className="font-inter" style={{ color: 'var(--blue)', fontWeight: 900, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 20 }}>
                       ₦{p.price.toLocaleString('en-NG')}
                     </p>
-                    <p className="font-inter mt-2" style={{ color: 'rgba(10,10,10,0.6)', fontSize: 13 }}>
+                    <p className="font-inter mt-2" style={{ color: 'var(--text-muted)', fontSize: 13 }}>
                       By {p.sellerName}
                     </p>
                   </Link>

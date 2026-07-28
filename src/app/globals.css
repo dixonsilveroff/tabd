@@ -2,10 +2,74 @@
 @import "tailwindcss";
 
 :root {
-  --black: #0A0A0A;
-  --white: #FFFFFF;
+  --bg-navbar: #FFFFFF;
+  --text-navbar: #0A0A0A;
+  --bg-main: #FFFFFF;
+  --text-main: #0A0A0A;
+  --border-main: #0A0A0A;
+  --text-muted: #4B5563;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F9F9F9;
+  --border-subtle: rgba(10,10,10,0.15);
+  
+  --bg-hero: #FFFFFF;
+  --text-hero: #0A0A0A;
+  --text-hero-muted: #4B5563;
+  --border-hero-subtle: rgba(10,10,10,0.3);
+  
+  --bg-mission: #FFFFFF;
+  --text-mission: #0A0A0A;
+  
+  --bg-footer: #FFFFFF;
+  --text-footer: #0A0A0A;
+  --border-footer: #0A0A0A;
+  
+  --bg-cart: #FFFFFF;
+  --text-cart: #0A0A0A;
+  --border-cart: #0A0A0A;
+  
+  --bg-checkout-totals: #0A0A0A;
+  --text-checkout-totals: #FFFFFF;
+  
+  --bg-admin-card: #F9F9F9;
+  
   --blue: #0047FF;
   --yellow: #FFA300;
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --bg-navbar: #0A0A0A;
+  --text-navbar: #FFFFFF;
+  --bg-main: #0A0A0A;
+  --text-main: #FFFFFF;
+  --border-main: #FFFFFF;
+  --text-muted: #D1D5DB;
+  --bg-card: #121212;
+  --bg-subtle: #1A1A1A;
+  --border-subtle: rgba(255,255,255,0.15);
+  
+  --bg-hero: #0A0A0A;
+  --text-hero: #FFFFFF;
+  --text-hero-muted: rgba(255,255,255,0.65);
+  --border-hero-subtle: rgba(255,255,255,0.3);
+  
+  --bg-mission: #0A0A0A;
+  --text-mission: #FFFFFF;
+  
+  --bg-footer: #0A0A0A;
+  --text-footer: #FFFFFF;
+  --border-footer: rgba(255,255,255,0.1);
+  
+  --bg-cart: #0A0A0A;
+  --text-cart: #FFFFFF;
+  --border-cart: rgba(255,255,255,0.15);
+  
+  --bg-checkout-totals: #FFFFFF;
+  --text-checkout-totals: #0A0A0A;
+  
+  --bg-admin-card: #1A1A1A;
 }
 
 /* === RESET: Zero border-radius everywhere === */
@@ -21,13 +85,14 @@ html {
 }
 
 body {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 /* === Typography === */
@@ -84,8 +149,8 @@ h4 {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--white);
+  background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--black);
+  background: var(--text-main);
 }
