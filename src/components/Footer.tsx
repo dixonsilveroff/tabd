@@ -97,7 +97,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-2">
               <a
-                href="mailto:obiokoyechibueze@gmail.com"
+                href="mailto:team.tabd@gmail.com"
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
@@ -106,7 +106,7 @@ export default function Footer() {
                 }}
                 className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
               >
-                obiokoyechibueze@gmail.com
+                team.tabd@gmail.com
               </a>
               <a
                 href="tel:08110445408"
@@ -120,7 +120,19 @@ export default function Footer() {
               >
                 08110445408
               </a>
-              <p
+              <a
+                href="tel:09047921865"
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 14,
+                  color: '#D1D5DB',
+                  textDecoration: 'none',
+                }}
+                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+              >
+                09047921865
+              </a>
+              {/* <p
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 12,
@@ -130,7 +142,7 @@ export default function Footer() {
                 }}
               >
                 YLDP 2026 Change Project
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
