@@ -8,20 +8,27 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const categoryLabel: Record<string, string> = {
+    soap: 'Soap Making',
+    crochet: 'Crocheting',
+    beads: 'Bead Making',
+    millinery: 'Millinery',
+  };
+
   return (
     <Link
       href={`/shop/${product.slug}`}
-      className="group flex flex-col bg-white border border-[#0A0A0A] shadow-md rounded-none"
+      className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-main)] shadow-md rounded-none hover:-translate-y-1.5 hover:shadow-xl transition-all duration-250"
       style={{ borderRadius: 0 }}
     >
       {/* Image area */}
-      <div className="relative h-60 bg-gray-100 overflow-hidden rounded-none flex items-center justify-center">
+      <div className="relative h-60 bg-[var(--bg-subtle)] overflow-hidden rounded-none flex items-center justify-center">
         {product.images[0] ? (
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
-            className="object-cover rounded-none"
+            className="object-cover rounded-none transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : null}
@@ -31,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           style={{ fontFamily: 'Inter, sans-serif' }}
           aria-hidden="true"
         >
-          {product.category}
+          {categoryLabel[product.category]}
         </span>
       </div>
 
@@ -45,10 +52,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             fontWeight: 500,
             fontSize: '11px',
             letterSpacing: '3px',
-            color: '#FFA300',
+            color: 'var(--yellow)',
           }}
         >
-          {product.category}
+          {categoryLabel[product.category]}
         </span>
 
         {/* Product name */}
@@ -58,7 +65,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             fontFamily: "'Barlow Condensed', sans-serif",
             fontWeight: 700,
             fontSize: '22px',
-            color: '#0A0A0A',
+            color: 'var(--text-main)',
             lineHeight: 1.1,
           }}
         >
@@ -70,7 +77,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '13px',
-            color: '#4B5563', // gray-600
+            color: 'var(--text-muted)',
           }}
         >
           {product.sellerName}
@@ -85,7 +92,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             fontFamily: "'Barlow Condensed', sans-serif",
             fontWeight: 900,
             fontSize: '24px',
-            color: '#0047FF',
+            color: 'var(--blue)',
           }}
         >
           ₦{product.price.toLocaleString('en-NG')}
@@ -94,21 +101,26 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* CTA */}
       <div
-        className="flex items-center justify-between px-4 py-3 bg-[#0A0A0A] group-hover:bg-[#0047FF] transition-colors duration-200 rounded-none mt-auto"
+        className="flex items-center justify-between px-4 py-3 bg-[var(--border-main)] group-hover:bg-[var(--blue)] transition-colors duration-200 rounded-none mt-auto"
         style={{ borderRadius: 0 }}
       >
         <span
-          className="uppercase text-white"
+          className="uppercase"
           style={{
             fontFamily: 'Inter, sans-serif',
             fontWeight: 500,
             fontSize: '13px',
             letterSpacing: '2px',
+            color: 'var(--bg-main)',
           }}
         >
           View Product
         </span>
-        <ArrowUpRight size={16} className="text-white" />
+        <ArrowUpRight
+          size={16}
+          style={{ color: 'var(--bg-main)' }}
+          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
       </div>
     </Link>
   );

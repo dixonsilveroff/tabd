@@ -12,22 +12,22 @@ export default function HomePage() {
     <>
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
-        className="w-full min-h-[90vh] flex flex-col justify-end"
-        style={{ backgroundColor: '#0A0A0A' }}
+        className="w-full min-h-[90vh] flex flex-col justify-end transition-colors duration-200"
+        style={{ backgroundColor: 'var(--bg-hero)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 w-full">
           {/* Eyebrow */}
           <p
             className="label mb-6"
-            style={{ color: '#FFA300' }}
+            style={{ color: 'var(--yellow)' }}
           >
             YLDP 2026 · Ikwo LGA, Ebonyi State
           </p>
 
           {/* Headline */}
           <h1
-            className="text-white mb-6"
-            style={{ fontSize: 'clamp(56px, 10vw, 100px)', maxWidth: 900 }}
+            className="mb-6"
+            style={{ fontSize: 'clamp(56px, 10vw, 100px)', maxWidth: 900, color: 'var(--text-hero)' }}
           >
             ABILITIES<br />
             BEYOND<br />
@@ -37,7 +37,7 @@ export default function HomePage() {
           {/* Sub-text */}
           <p
             className="font-inter mb-10 max-w-xl"
-            style={{ color: 'rgba(255,255,255,0.65)', fontSize: 18 }}
+            style={{ color: 'var(--text-hero-muted)', fontSize: 18 }}
           >
             A marketplace for handcrafted goods made by persons with disabilities
             in Ikwo LGA — soaps, crochet, beads, and millinery, each piece
@@ -48,23 +48,23 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors hover:bg-[#FFA300]"
+              className="group inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--yellow)] hover:text-black hover:scale-[1.02]"
               style={{
-                backgroundColor: '#0047FF',
-                color: '#FFFFFF',
+                backgroundColor: 'var(--blue)',
+                color: 'var(--white)',
                 letterSpacing: '2px',
               }}
             >
               Shop Now
-              <ArrowRight size={16} />
+              <ArrowRight size={16} className="transition-transform duration-250 group-hover:translate-x-1" />
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--text-hero)] hover:text-[var(--bg-hero)] hover:border-[var(--text-hero)] hover:scale-[1.02]"
               style={{
                 backgroundColor: 'transparent',
-                color: '#FFFFFF',
-                border: '1px solid rgba(255,255,255,0.3)',
+                color: 'var(--text-hero)',
+                border: '1px solid var(--border-hero-subtle)',
                 letterSpacing: '2px',
               }}
             >
@@ -74,20 +74,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IMPACT STATS ────────────────────────────────── */}
+      {/* ── IMPACT STATS (Uses gap trick for clean mobile-first borders) ── */}
       <section
-        className="w-full border-b"
-        style={{ backgroundColor: '#FFA300', borderColor: '#0A0A0A' }}
+        className="w-full"
+        style={{ backgroundColor: '#0A0A0A' }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {IMPACT_STATS.map((stat, i) => (
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-[#0A0A0A] border-b border-[#0A0A0A]">
+            {IMPACT_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="py-8 px-6 flex flex-col gap-1"
-                style={{
-                  borderRight: i < IMPACT_STATS.length - 1 ? '1px solid #0A0A0A' : 'none',
-                }}
+                className="py-8 px-6 flex flex-col gap-1 bg-[#FFA300] hover:brightness-95 transition-all duration-200"
               >
                 <span
                   style={{
@@ -114,13 +111,13 @@ export default function HomePage() {
 
       {/* ── MISSION BANNER ──────────────────────────────── */}
       <section
-        className="w-full py-16 md:py-20"
-        style={{ backgroundColor: '#0A0A0A' }}
+        className="w-full py-16 md:py-20 transition-colors duration-200"
+        style={{ backgroundColor: 'var(--bg-mission)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <p
             className="label mb-4"
-            style={{ color: '#0047FF' }}
+            style={{ color: 'var(--blue)' }}
           >
             Our Mission
           </p>
@@ -129,7 +126,7 @@ export default function HomePage() {
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
               fontSize: 'clamp(36px, 5vw, 64px)',
-              color: '#FFFFFF',
+              color: 'var(--text-mission)',
               lineHeight: 0.95,
               maxWidth: 800,
             }}
@@ -140,17 +137,17 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED PRODUCTS ───────────────────────────── */}
-      <section className="w-full py-16 md:py-24" style={{ backgroundColor: '#FFFFFF' }}>
+      <section className="w-full py-16 md:py-24 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex items-end justify-between mb-10 border-b pb-6" style={{ borderColor: '#0A0A0A' }}>
+          <div className="flex items-end justify-between mb-10 border-b pb-6" style={{ borderColor: 'var(--border-main)' }}>
             <div>
-              <p className="label mb-2" style={{ color: '#FFA300' }}>Featured Products</p>
+              <p className="label mb-2" style={{ color: 'var(--yellow)' }}>Featured Products</p>
               <h2
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 'clamp(36px, 4vw, 56px)',
-                  color: '#0A0A0A',
+                  color: 'var(--text-main)',
                   lineHeight: 0.93,
                 }}
               >
@@ -159,8 +156,8 @@ export default function HomePage() {
             </div>
             <Link
               href="/shop"
-              className="hidden md:inline-flex items-center gap-2 font-inter font-medium text-sm uppercase transition-colors"
-              style={{ color: '#0047FF', letterSpacing: '2px' }}
+              className="hidden md:inline-flex items-center gap-2 font-inter font-medium text-sm uppercase transition-all duration-200 hover:text-[var(--yellow)] hover:translate-x-1"
+              style={{ color: 'var(--blue)', letterSpacing: '2px' }}
             >
               View All <ArrowRight size={14} />
             </Link>
@@ -175,8 +172,8 @@ export default function HomePage() {
           <div className="mt-10 md:hidden text-center">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest"
-              style={{ backgroundColor: '#0A0A0A', color: '#FFFFFF' }}
+              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-[var(--blue)] hover:text-white"
+              style={{ backgroundColor: 'var(--border-main)', color: 'var(--bg-main)' }}
             >
               View All Products <ArrowRight size={14} />
             </Link>
@@ -184,7 +181,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── ABOUT STRIP ────────────────────────────────── */}
+      {/* ── ABOUT STRIP (Stays consistent brand Blue/White) ── */}
       <section
         className="w-full py-16 md:py-24"
         style={{ backgroundColor: '#0047FF' }}
@@ -228,7 +225,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 font-inter font-medium text-sm uppercase tracking-widest transition-all duration-200 hover:bg-black hover:text-white hover:scale-[1.02]"
               style={{ backgroundColor: '#FFA300', color: '#0A0A0A', letterSpacing: '2px' }}
             >
               Read Our Story <ArrowRight size={14} />
@@ -237,24 +234,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CATEGORIES STRIP ──────────────────────────── */}
-      <section className="w-full py-16 md:py-20" style={{ backgroundColor: '#FFFFFF' }}>
+      {/* ── CATEGORIES STRIP (Uses gap trick for clean mobile-first borders) ── */}
+      <section className="w-full py-16 md:py-20 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)', borderTop: '1px solid var(--border-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <p className="label mb-6" style={{ color: '#FFA300' }}>Shop by Category</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0" style={{ border: '1px solid #0A0A0A' }}>
+          <p className="label mb-6" style={{ color: 'var(--yellow)' }}>Shop by Category</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-[var(--border-main)] border border-[var(--border-main)]">
             {[
-              { label: 'Soap Making', href: '/shop?category=soap', accent: '#0047FF' },
-              { label: 'Crocheting', href: '/shop?category=crochet', accent: '#FFA300' },
-              { label: 'Bead Making', href: '/shop?category=beads', accent: '#0047FF' },
-              { label: 'Millinery', href: '/shop?category=millinery', accent: '#FFA300' },
-            ].map((cat, i) => (
+              { label: 'Soap Making', href: '/shop?category=soap', accent: 'var(--blue)' },
+              { label: 'Crocheting', href: '/shop?category=crochet', accent: 'var(--yellow)' },
+              { label: 'Bead Making', href: '/shop?category=beads', accent: 'var(--blue)' },
+              { label: 'Millinery', href: '/shop?category=millinery', accent: 'var(--yellow)' },
+            ].map((cat) => (
               <Link
                 key={cat.label}
                 href={cat.href}
-                className="flex flex-col gap-3 p-8 transition-colors group"
-                style={{
-                  borderRight: i < 3 ? '1px solid #0A0A0A' : 'none',
-                }}
+                className="flex flex-col gap-3 p-8 bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] transition-colors duration-250 group"
               >
                 <span
                   style={{
@@ -269,15 +263,15 @@ export default function HomePage() {
                     fontWeight: 900,
                     fontSize: 28,
                     textTransform: 'uppercase',
-                    color: '#0A0A0A',
                     lineHeight: 0.95,
                   }}
+                  className="text-[var(--text-main)]"
                 >
                   {cat.label}
                 </span>
                 <span
-                  className="label group-hover:text-blue-700 transition-colors"
-                  style={{ color: '#0A0A0A', fontSize: 11, letterSpacing: '2px' }}
+                  className="label group-hover:text-[var(--blue)] group-hover:translate-x-1.5 transition-all duration-200 w-fit"
+                  style={{ fontSize: 11, letterSpacing: '2px' }}
                 >
                   Shop →
                 </span>

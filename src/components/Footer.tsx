@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0A0A0A', color: '#FFFFFF' }}>
+    <footer style={{ backgroundColor: 'var(--bg-footer)', borderTop: '1px solid var(--border-footer)' }} className="transition-colors duration-200">
       {/* Main body */}
       <div className="px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 w-fit hover:opacity-85 hover:scale-[1.02] transition-all duration-200">
               <Image
                 src="/logo.png"
                 alt="TABD"
@@ -17,17 +17,17 @@ export default function Footer() {
                 height={48}
                 style={{ borderRadius: 0 }}
               />
-            </div>
+            </Link>
             <p
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 24,
-                color: '#FFFFFF',
                 textTransform: 'uppercase',
                 letterSpacing: '0.04em',
                 lineHeight: 1.1,
               }}
+              className="text-[var(--text-footer)] transition-colors duration-200"
             >
               Abilities Beyond<br />Disabilities
             </p>
@@ -35,9 +35,9 @@ export default function Footer() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 14,
-                color: '#9CA3AF',
                 letterSpacing: '0.02em',
               }}
+              className="text-[var(--text-muted)] transition-colors duration-200"
             >
               Inclusion · Empowerment · Opportunity
             </p>
@@ -50,7 +50,7 @@ export default function Footer() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 12,
-                color: '#FFA300',
+                color: 'var(--yellow)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
               }}
@@ -70,10 +70,9 @@ export default function Footer() {
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: 14,
-                    color: '#D1D5DB',
                     textDecoration: 'none',
                   }}
-                  className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                  className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
                 >
                   {link.label}
                 </Link>
@@ -88,7 +87,7 @@ export default function Footer() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: 12,
-                color: '#FFA300',
+                color: 'var(--yellow)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
               }}
@@ -97,40 +96,38 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-2">
               <a
-                href="mailto:obiokoyechibueze@gmail.com"
+                href="mailto:team.tabd@gmail.com"
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: '#D1D5DB',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
-                obiokoyechibueze@gmail.com
+                team.tabd@gmail.com
               </a>
               <a
                 href="tel:08110445408"
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 14,
-                  color: '#D1D5DB',
                   textDecoration: 'none',
                 }}
-                className="hover:text-[#0047FF] transition-colors duration-200 w-fit"
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
                 08110445408
               </a>
-              <p
+              <a
+                href="tel:09047921865"
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: 12,
-                  color: '#6B7280',
-                  fontStyle: 'italic',
-                  marginTop: 8,
+                  fontSize: 14,
+                  textDecoration: 'none',
                 }}
+                className="text-[var(--text-muted)] hover:text-[var(--blue)] hover:translate-x-1.5 transition-all duration-200 w-fit"
               >
-                YLDP 2026 Change Project
-              </p>
+                09047921865
+              </a>
             </div>
           </div>
         </div>
@@ -138,17 +135,17 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div
-        style={{ borderTop: '1px solid rgba(255,255,255,0.10)' }}
+        style={{ borderTop: '1px solid var(--border-subtle)' }}
         className="py-6 px-8"
       >
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: 12,
-            color: '#6B7280',
             textAlign: 'center',
             lineHeight: 1.6,
           }}
+          className="text-[var(--text-muted)] transition-colors duration-200"
         >
           © 2026 Team Abilities Beyond Disabilities. Alex Ekwueme Federal University,
           Ndufu-Alike, Ikwo LGA, Ebonyi State.

@@ -28,6 +28,16 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var theme = localStorage.getItem('tabd-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col">
         <Navbar />

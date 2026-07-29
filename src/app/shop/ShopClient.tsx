@@ -35,12 +35,19 @@ export default function ShopClient() {
     return matchesCategory && matchesSearch;
   });
 
+  const categoryLabels: Record<string, string> = {
+    soap: 'Soap Making',
+    crochet: 'Crocheting',
+    beads: 'Bead Making',
+    millinery: 'Millinery',
+  };
+
   return (
     <>
       {/* ── Page Header ────────────────────────────────── */}
-      <section className="w-full py-14" style={{ backgroundColor: '#0A0A0A' }}>
+      <section className="w-full py-14 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-hero)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <p className="label mb-3" style={{ color: '#FFA300' }}>
+          <p className="label mb-3" style={{ color: 'var(--yellow)' }}>
             All Products
           </p>
           <h1
@@ -48,7 +55,7 @@ export default function ShopClient() {
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
               fontSize: 'clamp(48px, 8vw, 80px)',
-              color: '#FFFFFF',
+              color: 'var(--text-hero)',
               lineHeight: 0.92,
             }}
           >
@@ -59,50 +66,51 @@ export default function ShopClient() {
 
       {/* ── Filters ─────────────────────────────────────── */}
       <section
-        className="w-full sticky top-16 z-40"
-        style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #0A0A0A' }}
+        className="w-full sticky top-16 z-40 transition-colors duration-200"
+        style={{ backgroundColor: 'var(--bg-main)', borderBottom: '1px solid var(--border-main)' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap items-center gap-0">
-            {/* Category tabs */}
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className="px-6 py-4 font-inter font-medium text-sm uppercase transition-colors"
-                style={{
-                  letterSpacing: '2px',
-                  fontSize: 12,
-                  backgroundColor: activeCategory === cat.value ? '#0A0A0A' : 'transparent',
-                  color: activeCategory === cat.value ? '#FFFFFF' : '#0A0A0A',
-                  borderRight: '1px solid rgba(10,10,10,0.15)',
-                  borderTop: 'none',
-                  borderBottom: 'none',
-                  borderLeft: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
+            {/* Category tabs (Horizontal scrollable on mobile) */}
+            <div className="flex items-center gap-0 overflow-x-auto scrollbar-none flex-nowrap shrink-0 border-b md:border-b-0" style={{ borderColor: 'var(--border-subtle)' }}>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.value}
+                  onClick={() => setActiveCategory(cat.value)}
+                  className="px-5 py-4 font-inter font-medium text-xs md:text-sm uppercase transition-all duration-150 shrink-0 hover:bg-[var(--bg-subtle)]"
+                  style={{
+                    letterSpacing: '1.5px',
+                    backgroundColor: activeCategory === cat.value ? 'var(--border-main)' : 'transparent',
+                    color: activeCategory === cat.value ? 'var(--bg-main)' : 'var(--text-main)',
+                    borderRight: '1px solid var(--border-subtle)',
+                    borderTop: 'none',
+                    borderBottom: 'none',
+                    borderLeft: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
 
             {/* Search */}
             <div
-              className="flex items-center gap-2 ml-auto"
-              style={{ borderLeft: '1px solid rgba(10,10,10,0.15)', paddingLeft: 16 }}
+              className="flex items-center gap-2 py-3 md:py-0 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'var(--border-subtle)', paddingLeft: 16 }}
             >
-              <Search size={14} color="#0A0A0A" />
+              <Search size={14} style={{ color: 'var(--text-main)' }} />
               <input
                 type="text"
                 placeholder="Search products or sellers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="font-inter bg-transparent outline-none text-sm"
-                style={{ fontSize: 13, color: '#0A0A0A', minWidth: 200 }}
+                className="font-inter bg-transparent outline-none text-sm transition-all duration-150 focus:w-[220px]"
+                style={{ fontSize: 13, color: 'var(--text-main)', minWidth: 180 }}
               />
               {searchQuery && (
-                <button onClick={() => setSearchQuery('')}>
-                  <X size={14} color="#0A0A0A" />
+                <button onClick={() => setSearchQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer' }} className="hover:scale-110 transition-transform duration-100">
+                  <X size={14} style={{ color: 'var(--text-main)' }} />
                 </button>
               )}
             </div>
@@ -111,10 +119,10 @@ export default function ShopClient() {
       </section>
 
       {/* ── Product Grid ─────────────────────────────────── */}
-      <section className="w-full py-12" style={{ backgroundColor: '#FFFFFF' }}>
+      <section className="w-full py-12 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Result count */}
-          <p className="label mb-8" style={{ color: 'rgba(10,10,10,0.4)', fontSize: 11 }}>
+          <p className="label mb-8" style={{ color: 'var(--text-muted)', fontSize: 11 }}>
             {filtered.length} {filtered.length === 1 ? 'product' : 'products'} found
           </p>
 
@@ -125,7 +133,7 @@ export default function ShopClient() {
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 900,
                   fontSize: 40,
-                  color: '#0A0A0A',
+                  color: 'var(--text-main)',
                   textTransform: 'uppercase',
                   marginBottom: 12,
                 }}
@@ -134,7 +142,7 @@ export default function ShopClient() {
               </h2>
               <p
                 className="font-inter"
-                style={{ color: 'rgba(10,10,10,0.5)', fontSize: 16 }}
+                style={{ color: 'var(--text-muted)', fontSize: 16 }}
               >
                 Try a different category or clear your search.
               </p>

@@ -24,11 +24,9 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
     return (
       <button
         disabled
-        className="w-full flex items-center justify-center gap-3 py-4 rounded-none cursor-not-allowed"
+        className="w-full flex items-center justify-center gap-3 py-4 rounded-none cursor-not-allowed text-[var(--black)] bg-gray-400"
         style={{
           borderRadius: 0,
-          backgroundColor: '#9CA3AF', // gray-400
-          color: '#0A0A0A',
           fontFamily: "'Barlow Condensed', sans-serif",
           fontWeight: 900,
           fontSize: '18px',
@@ -43,25 +41,17 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
   return (
     <button
       onClick={handleClick}
-      className="w-full flex items-center justify-center gap-3 py-4 rounded-none transition-colors duration-200"
+      className={`w-full flex items-center justify-center gap-3 py-4 rounded-none transition-all duration-200 cursor-pointer hover:scale-[1.01] ${
+        added
+          ? 'bg-[var(--yellow)] text-black'
+          : 'bg-[var(--blue)] text-white hover:bg-[var(--border-main)] hover:text-[var(--bg-main)]'
+      }`}
       style={{
         borderRadius: 0,
-        backgroundColor: added ? '#FFA300' : '#0047FF',
-        color: added ? '#0A0A0A' : '#FFFFFF',
         fontFamily: "'Barlow Condensed', sans-serif",
         fontWeight: 900,
         fontSize: '18px',
         letterSpacing: '1px',
-      }}
-      onMouseEnter={(e) => {
-        if (!added) {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0A0A0A';
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (!added) {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0047FF';
-        }
       }}
     >
       {added ? (
