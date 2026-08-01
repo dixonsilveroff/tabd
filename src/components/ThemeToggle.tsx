@@ -7,6 +7,7 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem('tabd-theme') as 'light' | 'dark';
@@ -14,6 +15,7 @@ export default function ThemeToggle() {
       setTheme(saved);
     }
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const toggleTheme = () => {
     const next = theme === 'light' ? 'dark' : 'light';
