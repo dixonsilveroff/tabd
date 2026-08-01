@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --font-barlow: 'Barlow Condensed', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  --color-blue: #0047FF;
+  --color-yellow: #FFA300;
+  --color-black: #0A0A0A;
+  --color-white: #FFFFFF;
+}
+
 :root {
   --bg-navbar: #FFFFFF;
   --text-navbar: #0A0A0A;
@@ -124,15 +134,6 @@ h4 {
   font-size: 13px;
   letter-spacing: 3.5px;
   text-transform: uppercase;
-}
-
-/* === Utility Classes === */
-.font-barlow {
-  font-family: 'Barlow Condensed', sans-serif;
-}
-
-.font-inter {
-  font-family: 'Inter', sans-serif;
 }
 
 /* === Transitions === */

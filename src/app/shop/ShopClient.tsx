@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Search, X } from 'lucide-react';
 import { PRODUCTS, type ProductCategory } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
@@ -15,16 +15,21 @@ const CATEGORIES: { label: string; value: ProductCategory | 'all' }[] = [
 ];
 
 export default function ShopClient() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const initialCategory = (searchParams.get('category') as ProductCategory | null) || 'all';
-
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>(initialCategory);
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    const cat = searchParams.get('category') as ProductCategory | null;
-    if (cat) setActiveCategory(cat);
-  }, [searchParams]);
+  const activeCategory = (searchParams.get('category') as ProductCategory | 'all' | null) || 'all';
+
+  const handleCategoryChange = (cat: ProductCategory | 'all') => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (cat === 'all') {
+      params.delete('category');
+    } else {
+      params.set('category', cat);
+    }
+    router.push(`/shop?${params.toString()}`);
+  };
 
   const filtered = PRODUCTS.filter((p) => {
     const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
@@ -35,12 +40,6 @@ export default function ShopClient() {
     return matchesCategory && matchesSearch;
   });
 
-  const categoryLabels: Record<string, string> = {
-    soap: 'Soap Making',
-    crochet: 'Crocheting',
-    beads: 'Bead Making',
-    millinery: 'Millinery',
-  };
 
   return (
     <>
@@ -76,7 +75,7 @@ export default function ShopClient() {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.value}
-                  onClick={() => setActiveCategory(cat.value)}
+                  onClick={() => handleCategoryChange(cat.value)}
                   className="px-5 py-4 font-inter font-medium text-xs md:text-sm uppercase transition-all duration-150 shrink-0 hover:bg-[var(--bg-subtle)]"
                   style={{
                     letterSpacing: '1.5px',

@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getFeaturedProducts } from '@/data/products';
 import { IMPACT_STATS } from '@/data/team';
 import ProductCard from '@/components/ProductCard';
+import DocPhotoOnly from '@/components/DocPhotoOnly';
+
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
@@ -187,14 +188,12 @@ export default function HomePage() {
         style={{ backgroundColor: '#0047FF' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-12 items-start">
-          {/* Logo */}
-          <div className="shrink-0">
-            <Image
-              src="/logo.png"
-              alt="TABD Logo"
-              width={160}
-              height={160}
-              style={{ filter: 'brightness(0) invert(1)' }}
+          {/* Photo Documentation Placeholder */}
+          <div className="shrink-0 w-full md:w-80">
+            <DocPhotoOnly
+              imageUrl="/gallery/initiative.jpg"
+              alt="Empowering Artisans in Ikwo LGA"
+              aspectRatio="square"
             />
           </div>
 

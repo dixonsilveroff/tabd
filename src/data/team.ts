@@ -5,6 +5,7 @@ export type TeamMember = {
   email: string;
   isLead?: boolean;
   isDeputy?: boolean;
+  imageUrl?: string;
 };
 
 export type Partner = {
@@ -20,6 +21,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     phone: '08110445408',
     email: 'obiokoyechibueze@gmail.com',
     isLead: true,
+    imageUrl: '/team/stella.jpg',
   },
   {
     name: 'Victor Ikechukwu Nwafor',
@@ -27,36 +29,42 @@ export const TEAM_MEMBERS: TeamMember[] = [
     phone: '09047921865',
     email: 'dixonsilverofficial@gmail.com',
     isDeputy: true,
+    imageUrl: '/team/victor.jpg',
   },
   {
     name: 'Mgbabor Ugochukwu Cyrina',
     role: 'Crocheting',
     phone: '09122564908',
     email: 'Linamarcel288@gmail.com',
+    imageUrl: '/team/cyrina.jpg',
   },
   {
     name: 'Ekwueme Richard Ikenna',
     role: 'Bead Making',
     phone: '08157017809',
     email: 'ekwuemeikennarich@gmail.com',
+    imageUrl: '/team/ikenna.jpg',
   },
   {
     name: 'Onyeka Ifeoma Vera',
     role: 'Crocheting',
     phone: '09020773058',
     email: 'ifeomavera227@gmail.com',
+    imageUrl: '/team/vera.jpg',
   },
   {
     name: 'Ezeagwula Adaeze Confidence',
     role: 'Soap Making · Millinery',
     phone: '09136633486',
     email: 'pearladaeze16@gmail.com',
+    imageUrl: '/team/confidence.jpg',
   },
   {
     name: 'Ituma Virtuous Ogochukwu',
     role: 'Soap Making',
     phone: '08065043484',
     email: 'virtuousogochukwu@gmail.com',
+    imageUrl: '/team/virtuous.jpg',
   },
 ];
 

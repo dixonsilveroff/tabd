@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Users, Target, Clock } from 'lucide-react';
 import { TEAM_MEMBERS, PARTNERS, IMPACT_STATS } from '@/data/team';
+import TeamMemberCard from '@/components/TeamMemberCard';
+import DocPhotoCard from '@/components/DocPhotoCard';
 
 export const metadata: Metadata = {
   title: 'About — TABD Market',
@@ -196,57 +197,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[var(--border-main)] border border-[var(--border-main)]">
             {TEAM_MEMBERS.map((member) => (
-              <div
-                key={member.email}
-                className="p-8 hover:brightness-[0.98] md:hover:scale-[1.01] transition-all duration-200"
-                style={{
-                  backgroundColor: member.isLead ? 'var(--border-main)' : member.isDeputy ? 'var(--blue)' : 'var(--bg-card)',
-                  color: member.isLead ? 'var(--bg-main)' : member.isDeputy ? '#FFFFFF' : 'var(--text-main)',
-                }}
-              >
-                {(member.isLead || member.isDeputy) && (
-                  <span
-                    className="label inline-block mb-3 px-2 py-1"
-                    style={{
-                      fontSize: 10,
-                      backgroundColor: 'var(--yellow)',
-                      color: 'var(--black)',
-                    }}
-                  >
-                    {member.isLead ? 'Team Lead' : 'Team Deputy'}
-                  </span>
-                )}
-                <h3
-                  style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontWeight: 700,
-                    fontSize: 22,
-                    textTransform: 'uppercase',
-                    color: member.isLead ? 'var(--bg-main)' : member.isDeputy ? '#FFFFFF' : 'var(--text-main)',
-                    marginBottom: 6,
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <p
-                  className="label mb-4"
-                  style={{
-                    fontSize: 11,
-                    color: member.isLead ? 'var(--yellow)' : member.isDeputy ? 'rgba(255,255,255,0.8)' : 'var(--yellow)',
-                  }}
-                >
-                  {member.role}
-                </p>
-                <p
-                  className="font-inter"
-                  style={{
-                    fontSize: 13,
-                    color: member.isLead ? 'var(--text-muted)' : member.isDeputy ? 'rgba(255,255,255,0.7)' : 'var(--text-muted)',
-                  }}
-                >
-                  {member.phone}
-                </p>
-              </div>
+              <TeamMemberCard key={member.email} member={member} />
             ))}
           </div>
         </div>
@@ -316,6 +267,43 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Project Gallery ───────────────────────────── */}
+      <section className="w-full py-16 md:py-24 transition-colors duration-200" style={{ backgroundColor: 'var(--bg-main)', borderTop: '1px solid var(--border-subtle)' }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <p className="label mb-4" style={{ color: 'var(--yellow)' }}>Project Gallery</p>
+          <h2
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: 'clamp(32px, 4vw, 52px)',
+              color: 'var(--text-main)',
+              lineHeight: 0.93,
+              marginBottom: 40,
+            }}
+          >
+            DOCUMENTING OUR WORK<br />AND IMPACT STORIES.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <DocPhotoCard
+              imageUrl="/gallery/training.jpg"
+              title="Vocational Skills Training"
+              description="Hands-on learning sessions where participants acquire adaptive techniques in liquid soap-making, crocheting, beadwork, and millinery."
+            />
+            <DocPhotoCard
+              imageUrl="/gallery/digital.jpg"
+              title="Digital Onboarding & Business Setup"
+              description="Training on smartphones using WhatsApp Business and basic product photography to prepare participants for the digital marketplace."
+            />
+            <DocPhotoCard
+              imageUrl="/gallery/exhibition.jpg"
+              title="Community Exhibition & Fair"
+              description="A public product showcase and inclusion event that brings together community members and highlights the talents of disabled artisans."
+            />
           </div>
         </div>
       </section>

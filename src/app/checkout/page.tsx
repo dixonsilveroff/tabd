@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Minus, Plus, Trash2, ArrowLeft, MessageCircle, CheckCircle2 } from 'lucide-react';
-import { useCartStore, formatNaira } from '@/lib/cart';
+import { useCartStore } from '@/lib/cart';
 
 type FormData = {
   name: string;
@@ -15,7 +14,6 @@ type FormData = {
 
 export default function CheckoutPage() {
   const { items, removeItem, updateQuantity, clearCart, totalPrice, totalItems } = useCartStore();
-  const router = useRouter();
 
   const [form, setForm] = useState<FormData>({
     name: '',
